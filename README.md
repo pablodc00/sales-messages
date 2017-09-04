@@ -23,21 +23,21 @@ Check if app is running
 - `Message Type One`
 ```
 http://localhost:8080/salesmessage/messageTypeOne/{product}/{price}
-e.g: http://localhost:8080/salesmessage/messageTypeOne/apple/5
+e.g: PUT http://localhost:8080/salesmessage/messageTypeOne/apple/5
 ```
 
 
 - `Message Type Two`
 ```
 http://localhost:8080/salesmessage/messageTypeTwo/{product}/{price}/{ocurrences}
-e.g: http://localhost:8080/salesmessage/messageTypeTwo/orange/3/6
+e.g: PUT http://localhost:8080/salesmessage/messageTypeTwo/orange/3/6
 ```
 
 
 - `Message Type Three`
 ```
 http://localhost:8080/salesmessage/messageTypeThree/{product}/{operation}
-e.g: http://localhost:8080/salesmessage/messageTypeThree/onion/31/ADD
+e.g: PUT http://localhost:8080/salesmessage/messageTypeThree/onion/31/ADD
 Operations could be: ADD | SUBTRACT | MULTIPLY
 ``` 
 
