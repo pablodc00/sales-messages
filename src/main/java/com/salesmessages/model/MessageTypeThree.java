@@ -2,7 +2,7 @@ package com.salesmessages.model;
 
 import com.salesmessages.controller.Operation;
 
-public class MessageTypeThree extends MessageTypeTwo {
+public class MessageTypeThree extends MessageTypeOne {
 
     private Operation operation;
 

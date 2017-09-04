@@ -1,9 +1,8 @@
 package com.salesmessages.controller;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -13,29 +12,53 @@ import com.salesmessages.model.MessageTypeTwo;
 import com.salesmessages.service.MessageProcessingService;
 
 @Path("/salesmessage")
-@Consumes(MediaType.APPLICATION_JSON)
 public class SalesMessagesResource {
 
-    private MessageProcessingService service = new MessageProcessingService();    
+    private MessageProcessingService service = MessageProcessingService.getInstance();    
     
-    @POST
-    @Path("/messageTypeOne")
-    public Response messageTypeOne(MessageTypeOne message) {
+    @PUT
+    @Path("/messageTypeOne/{product}/{price}")
+    public Response messageTypeOne(@PathParam("product") String product, @PathParam("price") Double price) {
+
+        MessageTypeOne message = new MessageTypeOne();
+        message.setProduct(product);
+        message.setPrice(price);
+
         if (service.messageTypeOne(message)) {
+            return Response.ok().build();
+        }
+        
+        return Response.status(Status.NOT_ACCEPTABLE).build();
+    }
+    
+    @PUT
+    @Path("/messageTypeTwo/{product}/{price}/{ocurrences}")
+    public Response messageTypeTwo(@PathParam("product") String product, @PathParam("price") Double price, @PathParam("ocurrences") int ocurrences) {
+
+        MessageTypeTwo message = new MessageTypeTwo();
+        message.setProduct(product);
+        message.setPrice(price);
+        message.setOcurrences(ocurrences);
+        
+        if (service.messageTypeTwo(message)) {
             return Response.ok().build();
         }
         return Response.status(Status.NOT_ACCEPTABLE).build();
     }
     
-    @POST
-    @Path("/messageTypeTwo")
-    public Response messageTypeTwo(MessageTypeTwo message) {
-        return null;
-    }
-    
-    @POST
-    @Path("/messageTypeThree")    
-    public Response messageTypeThree(MessageTypeThree message) {
-        return null;
+    @PUT
+    @Path("/messageTypeThree/{product}/{price}/{operation}")
+    public Response messageTypeThree(@PathParam("product") String product, @PathParam("price") Double price, 
+            @PathParam("ocurrences") int ocurrences, @PathParam("operation") Operation operation) {
+        
+        MessageTypeThree message = new MessageTypeThree();
+        message.setProduct(product);
+        message.setPrice(price);
+        message.setOperation(operation);
+        
+        if (service.messageTypeThree(message)) {
+            return Response.ok().build();
+        }
+        return Response.status(Status.NOT_ACCEPTABLE).build();
     }
 }
