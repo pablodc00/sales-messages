@@ -6,10 +6,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.salesmessages.controller.Operation;
 import com.salesmessages.model.MessageTypeOne;
 import com.salesmessages.model.MessageTypeThree;
 import com.salesmessages.model.MessageTypeTwo;
+import com.salesmessages.model.Operation;
 
 public class MessageProcessingService {
     
