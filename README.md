@@ -8,6 +8,7 @@
 - Dependency: jersey-server
 
 I thought using REST is easier and faster way to develop and use this app instead of develop and use a sandalone app.
+To document and test the REST API I use to use Swagger, but I should have to add more dependencies to the project. 
 
 ## Run the app
 
