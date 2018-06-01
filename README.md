@@ -7,7 +7,7 @@
 - Maven 3
 - Dependency: jersey-server
 
-I thought using REST is easier and faster way to develop and use this app instead of develop and use a sandalone app. 
+I thought using REST is easier and faster way to develop and use this app instead of develop and use a sandalone app.
 
 ## Run the app
 

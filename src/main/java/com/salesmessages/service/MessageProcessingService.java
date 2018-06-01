@@ -13,13 +13,17 @@ import com.salesmessages.model.Operation;
 
 public class MessageProcessingService {
     
-    private static MessageProcessingService instance = null; 
+    private static MessageProcessingService instance; 
     private MessageProcessingService() {}
     
     
-    public static MessageProcessingService getInstance() {
+    public static synchronized MessageProcessingService getInstance() {
         if(instance == null) {
-           instance = new MessageProcessingService();
+            synchronized (MessageProcessingService.class) {
+                if(instance == null) {
+                    instance = new MessageProcessingService();
+                }
+            }
         }
         return instance;
      }
@@ -42,7 +46,7 @@ public class MessageProcessingService {
         return true;
     }
     
-    
+
     public boolean messageTypeTwo(MessageTypeTwo message) {
         if (!this.checkFiftyMessages()) {
             return false;
@@ -89,8 +93,7 @@ public class MessageProcessingService {
     
     private void checkTenMessages() {
         if ((count.get() % 10) == 0) {
-            System.out.println(
-                    "Number of sales of each product and their total value:");
+            System.out.println("Number of sales of each product and their total value:");
             this.accumulatedMap
                 .entrySet()
                 .forEach(entry -> 
@@ -101,13 +104,10 @@ public class MessageProcessingService {
     
     private boolean checkFiftyMessages() {
         if (count.get() == 50) {
-            System.out.println("Application is paused. It does not accept new messages.");
-            
-            System.out.println(
-                    "Adjustments that have been made to each sale type:");
-            
-            this.historicQueue
-                .forEach(e -> System.out.println(e));
+            System.err.println("Application is paused. It does not accept new messages.");            
+            System.out.println("Adjustments that have been made to each sale type:");
+
+            this.historicQueue.forEach(e -> System.out.println(e));
             return false;
         }
         return true;

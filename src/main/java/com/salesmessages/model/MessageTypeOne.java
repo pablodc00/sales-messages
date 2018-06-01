@@ -5,6 +5,12 @@ public class MessageTypeOne {
     private String product;
     private Double price;
 
+    
+    public MessageTypeOne(String product, Double price) {
+        this.product = product;
+        this.price = price;
+    }
+
     public String getProduct() {
         return product;
     }
