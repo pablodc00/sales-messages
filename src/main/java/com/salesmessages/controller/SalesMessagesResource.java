@@ -9,7 +9,6 @@ import javax.ws.rs.core.Response.Status;
 import com.salesmessages.model.MessageTypeOne;
 import com.salesmessages.model.MessageTypeThree;
 import com.salesmessages.model.MessageTypeTwo;
-import com.salesmessages.model.Operation;
 import com.salesmessages.service.MessageProcessingService;
 
 @Path("/salesmessage")
@@ -34,8 +33,7 @@ public class SalesMessagesResource {
     
     @PUT
     @Path("/messageTypeTwo/{product}/{price}/{ocurrences}")
-    public Response messageTypeTwo(@PathParam("product") String product, @PathParam("price") Double price, 
-            @PathParam("ocurrences") int ocurrences) {
+    public Response messageTypeTwo(@PathParam("product") String product, @PathParam("price") Double price, @PathParam("ocurrences") int ocurrences) {
 
         MessageTypeTwo message = new MessageTypeTwo();
         message.setProduct(product);
